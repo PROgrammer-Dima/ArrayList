@@ -342,6 +342,67 @@
             ArrayLength -= count;
             return count;
         }
+        public void AddListToEnd(ArrList list)
+        {
+            if(list is null)
+            {
+                throw new NullReferenceException();
+            }
+            else
+            {
+                for (int i = 0; i <list.ArrayLength; i++)
+                {
+                    Add(list[i]);
+                }
+            }
+        }
+        public void AddListToBeginning(ArrList list)
+        {
+            if (list is null)
+            {
+                throw new NullReferenceException();
+            }
+            if (ArrayLength + list.ArrayLength >= _array.Length)
+            {
+                UpSize();
+            }
+            AddList(list);
+        }
+        public void AddListToIndex(ArrList list, int index)
+        {
+            if (list is null)
+            {
+                throw new NullReferenceException();
+            }
+            if (ArrayLength + list.ArrayLength >= _array.Length)
+            {
+                UpSize();
+            }
+            if (index < 0 || index > ArrayLength)
+            {
+                throw new IndexOutOfRangeException();
+            }
+            AddList(list,index);
+        }
+        private void AddList(ArrList list, int index = 0)
+        {
+            int[] tmpArr = new int[_array.Length + list.ArrayLength];
+
+            for (int i = 0; i < index; i++)
+            {
+                tmpArr[i] = _array[i];
+            }
+            for (int i = list.ArrayLength + index; i < tmpArr.Length; i++)
+            {
+                tmpArr[i] = _array[i - list.ArrayLength];
+            }
+            for (int i = index; i < list.ArrayLength + index; i++)
+            {
+                tmpArr[i] = list[i - index];
+            }
+            ArrayLength += list.ArrayLength;
+            _array = tmpArr;
+        }
         public void Write()
         {
             for (int i = 0; i < ArrayLength; i++)

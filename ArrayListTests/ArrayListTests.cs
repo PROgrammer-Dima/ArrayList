@@ -16,6 +16,13 @@ namespace ArrayListTests
             Assert.AreEqual(expectedList, actualList);
         }
 
+        [TestCaseSource(typeof(AddListToEndTestSource))]
+        public void AddListToEndTest(ArrList list, ArrList actuallist, ArrList expectedList)
+        {
+            actuallist.AddListToEnd(list);
+            Assert.AreEqual(expectedList, actuallist);
+        }
+
         [TestCaseSource(typeof(AddFirstTestSource))]
         public void AddFirstTest(ArrList List, ArrList expectedList, int num)
         {
@@ -23,11 +30,26 @@ namespace ArrayListTests
             actualList.AddFirst(num);
             Assert.AreEqual(expectedList, actualList);
         }
+
+        [TestCaseSource(typeof(AddListToBeginningTestSource))]
+        public void AddListToBeginningTest(ArrList list, ArrList actualList, ArrList expectedList)
+        {
+            actualList.AddListToBeginning(list);
+            Assert.AreEqual(expectedList, actualList);
+        }
+
         [TestCaseSource(typeof(AddInIndexTestSource))]
         public void AddInIndexTest(ArrList List, ArrList expectedList, int index, int num)
         {
             ArrList actualList = List;
             actualList.AddInIndex(index,num);
+            Assert.AreEqual(expectedList, actualList);
+        }
+
+        [TestCaseSource(typeof(AddListToIndexTestSource))]
+        public void AddListToIndexTest(ArrList list, ArrList actualList, ArrList expectedList,int index)
+        {
+            actualList.AddListToIndex(list,index);
             Assert.AreEqual(expectedList, actualList);
         }
 
