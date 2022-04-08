@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HWArrayList", "HWArrayList\HWArrayList.csproj", "{D3809B00-7D34-4488-B4B6-5899DC4F6DED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lists", "HWArrayList\Lists.csproj", "{D3809B00-7D34-4488-B4B6-5899DC4F6DED}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyArrayLists", "MyArrayLists\MyArrayLists.csproj", "{963BDCED-1EA9-4D34-8099-50F9FD358A1B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyLists", "MyArrayLists\MyLists.csproj", "{963BDCED-1EA9-4D34-8099-50F9FD358A1B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyArrayList.Tests", "ArrayListTests\MyArrayList.Tests.csproj", "{66B6BCC3-B184-4D0F-A0A4-BEA38CB06210}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyLists.Tests", "ArrayListTests\MyLists.Tests.csproj", "{66B6BCC3-B184-4D0F-A0A4-BEA38CB06210}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

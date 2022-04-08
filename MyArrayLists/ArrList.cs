@@ -256,7 +256,6 @@
         {
             for (int i = 0; i < ArrayLength; i++)
             {
-
                 for (int j = 0; j < ArrayLength-1; j++)
                 {
                     if (_array[j] > _array[j + 1])
@@ -267,7 +266,6 @@
                     }
                 }
             }
-            
         }
         public void SortLessArray()
         {
