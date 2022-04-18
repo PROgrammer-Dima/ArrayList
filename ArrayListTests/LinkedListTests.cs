@@ -140,5 +140,29 @@ namespace MyLists.Tests
             actualList.SortOrderList();
             Assert.AreEqual(expectedList, actualList);
         }
+
+        [TestCaseSource(typeof(SortLessTestSource))]
+        public void SortLessTest(LinkedList list, LinkedList expectedList)
+        {
+            LinkedList actualList = list;
+            actualList.SortLess();
+            Assert.AreEqual(expectedList, actualList);
+        }
+
+        [TestCaseSource(typeof(DeleteFirstAtValueTestSource))]
+        public void DeleteFirstAtValueTest(LinkedList list,LinkedList expectedList, int expectedIndex, int value)
+        {
+           int actual = list.DeleteFirstAtValue(value);
+            Assert.AreEqual(expectedIndex, actual );
+            Assert.AreEqual(expectedList, list);
+        }
+
+        [TestCaseSource(typeof(DeleteAllAtValueTestSousce))]
+        public void DeleteAllAtValueTest(LinkedList list, LinkedList expectedList, int value, int expectedCount)
+        {
+            int actualCount = list.DeleteAllAtValue(value);
+            Assert.AreEqual(expectedList, list);
+            Assert.AreEqual(expectedCount, actualCount);
+        }
     }
 }

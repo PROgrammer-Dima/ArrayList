@@ -14,6 +14,18 @@ namespace MyLists.Tests.LinkedListTestsSourse
             actualList = new LinkedList(new int[] { 12, 5, 76, 3, 67, 0, 6, 3, -1 });
             expectedList = new LinkedList(new int[] { -1, 0, 3, 3, 5, 6, 12, 67, 76 });
             yield return new object[] { actualList, expectedList };
+
+            actualList = new LinkedList(new int[] { -1, 0 });
+            expectedList = new LinkedList(new int[] { -1, 0 });
+            yield return new object[] { actualList, expectedList };
+
+            actualList = new LinkedList(new int[] { 1, 0 });
+            expectedList = new LinkedList(new int[] { 0,1 });
+            yield return new object[] { actualList, expectedList };
+
+            actualList = new LinkedList(new int[] { 0 });
+            expectedList = new LinkedList(new int[] { 0 });
+            yield return new object[] { actualList, expectedList };
         }
     }
 }

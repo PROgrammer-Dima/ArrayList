@@ -254,6 +254,7 @@ namespace MyLists
         }
         public int FindIndex(int index)
         {
+
             Node crnt = GetNode(index);
             return crnt.Value;
         }
@@ -376,16 +377,17 @@ namespace MyLists
         }
         public void SortOrderList()
         {
-            for (int i = 0; i < Length; i++)
+            for (int i = 0; i < Length-1; i++)
             {
                 Node crnt = _root;
-                Node prev = _root;
                 Node next = crnt.Next;
-
+                Node prev = _root;
                 int count = 0;
+
                 while(next != null)
+
                 {
-                    if (crnt == _root && crnt.Value > next.Value)
+                    if(crnt==_root && crnt.Value > next.Value)
                     {
                         crnt.Next = next.Next;
                         _root = next;
@@ -394,18 +396,20 @@ namespace MyLists
 
                         count++;
                     }
-
-                    else if (crnt.Value > next.Value)
+                    else if(crnt.Value > next.Value)
                     {
-                        prev = crnt;
+                        crnt.Next = next.Next;
                         prev.Next = next;
                         next.Next = crnt;
-                        crnt.Next = next.Next;
+                        prev = next;
 
                         count++;
                     }
                     else
                     {
+                        crnt = crnt.Next;
+                        count++;
+
                         if (count > 1)
                         {
                             prev = prev.Next;
@@ -414,6 +418,99 @@ namespace MyLists
                     next = crnt.Next;
                 }
             }
+        }
+        public void SortLess()
+        {
+            for (int i = 0; i < Length-1; i++)
+            {
+                Node crnt = _root;
+                Node next = crnt.Next;
+                Node prev = _root;
+                int count = 0;
+
+                while (next != null)
+                {
+                    if (crnt == _root && crnt.Value < next.Value)
+                    {
+                        crnt.Next = next.Next;
+                        _root = next;
+                        next.Next = crnt;
+                        prev = next;
+
+                        count++;
+                    }
+                    else if (crnt.Value < next.Value)
+                    {
+                        crnt.Next = next.Next;
+                        prev.Next = next;
+                        next.Next = crnt;
+                        prev = next;
+
+                        count++;
+                    }
+                    else
+                    {
+                        crnt = crnt.Next;
+                        count++;
+                        if (count > 1)
+                        {
+                            prev = prev.Next;
+                        }
+                    }
+                    next = crnt.Next;
+                }
+            }
+        }
+        public int DeleteFirstAtValue(int value)
+        {
+            if(_root == null)
+            {
+                throw new Exception("List have nothing to delete");
+            }
+            int index = 0;
+            Node crnt = _root;
+            while (crnt != null)
+            {
+                if (crnt.Value==value)
+                {
+                    if (index == 0)
+                    {
+                        _root = crnt.Next;
+                        break;
+                    }
+                    else
+                    {
+                        Node prev = GetNode(index - 1);
+                        prev.Next = crnt.Next;
+                        break;
+                    }
+                }
+                index++;
+                crnt = crnt.Next;
+            }
+            return index;
+        }
+        public int DeleteAllAtValue(int value)
+        {
+            if(_root==null)
+            {
+                throw new Exception("List have nothing to delete");
+            }
+            int index = 0;
+            int count = 0;
+            Node crnt = _root;
+            while (crnt != null)
+            {
+                if (crnt.Value == value)
+                {
+                    DeleteByIndex(index);
+                    index--;
+                    count++;
+                }
+                index++; 
+                crnt = crnt.Next;
+            }
+            return count;
         }
         public override bool Equals(object? obj)
         {
@@ -428,16 +525,16 @@ namespace MyLists
             {
                 return false;
             }
-            Node crnt = _root;
-            Node crnt2 = list._root;
-            while (crnt != null)
+            Node thisCrnt = _root;
+            Node listCrnt = list._root;
+            while (thisCrnt != null)
             {
-                if (crnt.Value != crnt2.Value)
+                if (thisCrnt.Value != listCrnt.Value)
                 {
                     return false;
                 }
-                crnt = crnt.Next;
-                crnt2 = crnt2.Next;
+                thisCrnt = thisCrnt.Next;
+                listCrnt = listCrnt.Next;
             }
 
             return true;
@@ -456,7 +553,7 @@ namespace MyLists
 
             return str;
         }
-        private Node GetNode(int index)
+        public Node GetNode(int index)
         {
             Node crnt = _root;
             for (int i = 1; i <= index; i++)
